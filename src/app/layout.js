@@ -1,5 +1,7 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
+import clsx from "clsx";
+import Link from "next/link";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -11,7 +13,17 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={clsx(inter.className, 'container')}>
+        <div className="flex w-full justify-between items-center">
+          <a href="#">Logo</a>
+          <ul className="flex gap-3">
+            <li><Link href={'/'}>Home</Link></li>
+            <li><Link href={'/about'}>About</Link></li>
+            <li><Link href={'/contacts'}>Contacts</Link></li>
+          </ul>
+        </div>
+        {children}
+      </body>
     </html>
   );
 }
